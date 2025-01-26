@@ -1,8 +1,0 @@
- Volume in drive C has no label.
- Volume Serial Number is D6F6-9F83
-
- Directory of C:\Users\Manny\source\repos\test\test\folder
-
-01/26/2025  05:50 AM           220,957 Game_Room_Days.pdf
-               1 File(s)        220,957 bytes
-               0 Dir(s)  461,696,339,968 bytes free
