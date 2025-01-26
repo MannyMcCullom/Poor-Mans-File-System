@@ -13,7 +13,7 @@ int main()
     ifstream inFile;
     ofstream outFile;
     int currentFile;
-    
+
     int numOfFiles = 0;
 
     outFile.open("temp_test.bat");
@@ -188,13 +188,33 @@ int main()
         }
 
         inFile.close();
+
+        string tempFileName;
+        string tempBatchFile;
+
+        for (int index = 0; index < numOfFiles - 1;index++)
+        {
+            if (pFileName[index] > pFileName[index + 1])
+            {
+                tempFileName = pFileName[index];
+                tempBatchFile = pBatchFile[index];
+
+                pFileName[index] = pFileName[index + 1];
+                pBatchFile[index] = pBatchFile[index + 1];
+
+                pFileName[index + 1] = tempFileName;
+                pBatchFile[index + 1] = tempBatchFile;
+
+                index = -1;
+            }
+        }
     }
 
     else
     {
         cout << "No File" << endl;
     }
-    
+
     // Select file menu
     if (numOfFiles > 0)
     {
