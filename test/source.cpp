@@ -83,6 +83,8 @@ int main()
                     pFileName[currentFile] = line1;
                     pBatchFile[currentFile] = "batch" + to_string(currentFile) + ".bat";
 
+                    pFileName[currentFile] = '"' + line1 + '"';
+
                     outFile.open(pBatchFile[currentFile]);
 
                     outFile
@@ -94,28 +96,6 @@ int main()
                         ;
 
                     outFile.close();
-
-                    for (int index = 0; index < line1.length(); index++)
-                    {
-                        if (line1[index] == ' ')
-                        {
-                            pFileName[currentFile] = '"' + line1 + '"';
-
-                            outFile.open(pBatchFile[currentFile]);
-
-                            outFile
-                                << "cd folder"
-                                << endl
-                                << pFileName[currentFile]
-                                << endl
-                                << "exit"
-                                ;
-
-                            outFile.close();
-
-                            break;
-                        }
-                    }
 
                     outFile.open("temp_checkDir.bat");
 
@@ -229,13 +209,14 @@ int main()
             system("cls");
 
             cout
-                << "w or s to navigate"
+                << "        w or s to navigate"
                 << endl
-                << "e to open file"
+                << "        e to open file"
                 << endl
-                << "o to open explorer"
+                << "        o to open explorer"
                 << endl
-                << "q to exit"
+                << "        q to exit"
+                << endl
                 << endl
                 ;
 
@@ -243,12 +224,12 @@ int main()
             {
                 if (index == selection)
                 {
-                    cout << "-{" << pFileName[index] << "}-" << endl;
+                    cout << "-+-+-+-{" << pFileName[index].substr(1, pFileName[index].length() - 2) << "}-+-+-+-" << endl;
                 }
 
                 else
                 {
-                    cout << "  " << pFileName[index] << "  " << endl;
+                    cout << "        " << pFileName[index].substr(1, pFileName[index].length() - 2) << "        " << endl;
                 }
             }
 
