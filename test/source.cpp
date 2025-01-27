@@ -209,27 +209,53 @@ int main()
             system("cls");
 
             cout
-                << "        w or s to navigate"
+                << "         w or s to navigate"
                 << endl
-                << "        e to open file"
+                << "         e to open file"
                 << endl
-                << "        o to open explorer"
+                << "         o to open explorer"
                 << endl
-                << "        q to exit"
+                << "         q to exit"
                 << endl
                 << endl
                 ;
 
+            int dot;
+
             for (int index = 0; index < numOfFiles; index++)
             {
+                dot = 0;
+
+                for (int index2 = 0; index2 < pFileName[index].length(); index2++)
+                {
+                    if (pFileName[index][index2] == '.')
+                        dot = index2;
+                }
+
                 if (index == selection)
                 {
-                    cout << "-+-+-+-{" << pFileName[index].substr(1, pFileName[index].length() - 2) << "}-+-+-+-" << endl;
+                    if (dot > 0)
+                    {
+                        cout << "-+-+-+-{ " << pFileName[index].substr(1, pFileName[index].length() - (pFileName[index].length() - dot) - 1) << " }-+-+-+-" << endl;
+                    }
+
+                    else
+                    {
+                        cout << "-+-+-+-{ " << pFileName[index].substr(1, pFileName[index].length() - 2) << " }-+-+-+-" << endl;
+                    }
                 }
 
                 else
                 {
-                    cout << "        " << pFileName[index].substr(1, pFileName[index].length() - 2) << "        " << endl;
+                    if (dot > 0)
+                    {
+                        cout << "         " << pFileName[index].substr(1, pFileName[index].length() - (pFileName[index].length() - dot) - 1) << "         " << endl;
+                    }
+
+                    else
+                    {
+                        cout << "         " << pFileName[index].substr(1, pFileName[index].length() - 2) << "         " << endl;
+                    }
                 }
             }
 
